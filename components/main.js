@@ -3,6 +3,9 @@ import hackSimTitle from './hackSimTitle.js';
 import settings from "./settings.js";
 import store from 'store';
 import hostHackathon from "./hostHackathon.js";
+import discussion from "./discussion.js";
+import searchFilter from "./searchFilter.js";
+import findTeams from "./findTeams.js";
 
 async function main(){
     console.clear();
@@ -34,6 +37,32 @@ async function main(){
         case "exit":
             process.exit(0);
     }
+}
+
+async function myHackathonsMenu() {
+  const subMenu = await select({
+    message: "My Hackathons - Choose an option",
+    options: [
+      { value: "discuss", label: "Discussion" },
+      { value: "search", label: "Search and Filter Projects" },
+      { value: "teams", label: "Find Teams" },
+      { value: "back", label: "Back to Main Menu" },
+    ],
+  });
+
+  switch (subMenu) {
+    case "discuss":
+      await discussion();
+      break;
+    case "search":
+      await searchFilter();
+      break;
+    case "teams":
+      await findTeams();
+      break;
+    case "back":
+      return main();
+  }
 }
 
 export default main;
