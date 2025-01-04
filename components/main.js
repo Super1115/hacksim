@@ -1,11 +1,12 @@
 import { select } from "@clack/prompts";
 import hackSimTitle from './hackSimTitle.js';
 import settings from "./settings.js";
-
+import store from 'store';
 
 async function main(){
     console.clear();
     hackSimTitle();
+    console.log(`Hello! ${store.get('user').name}`);
     const menu = await select({
         message: 'MENU',
         options: [
