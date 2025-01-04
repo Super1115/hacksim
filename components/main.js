@@ -45,7 +45,7 @@ async function main(){
 }
 
 // Sub Menu of My Hackathon
-async function myHackathonsMenu() {
+async function join() {
   const subMenu = await select({
     message: "My Hackathons - Choose an option",
     options: [
