@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/Super1115/hacksim#readme",
   "dependencies": {
+    "@clack/prompts": "^0.9.0",
     "axios": "^1.7.9",
+    "clack": "^0.1.0",
     "dotenv": "^16.4.7",
     "figlet": "^1.8.0",
     "open": "^10.1.0"

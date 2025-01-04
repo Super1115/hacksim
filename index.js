@@ -2,10 +2,9 @@
 import hackSimTitle from './components/hackSimTitle.js';
 import 'dotenv/config'
 
-import githubAuth from './components/githubAuth.js';
+import auth from './components/auth.js';
 
 hackSimTitle();
 
 
-const authData = await githubAuth(process.env.GITHUB_CLIENT_ID, process.env.GITHUB_CLIENT_SECRET);
-console.log(authData);
+auth(process.env.GITHUB_CLIENT_ID, process.env.GITHUB_CLIENT_SECRET);
