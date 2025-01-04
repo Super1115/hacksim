@@ -4,8 +4,7 @@ import settings from "./settings.js";
 import store from 'store';
 import hostHackathon from "./hostHackathon.js";
 import discussion from "./discussion.js"; // New File
-import searchFilter from "./searchFilter.js"; // New File
-import findTeams from "./findTeams.js"; // New File
+import searchFilter from "./searchFilter.js"; // New File with the find team
 import judgingSection from "./judging.js"; // New File
 
 async function main(){
@@ -47,11 +46,10 @@ async function main(){
 // Sub Menu of My Hackathon
 async function join() {
   const subMenu = await select({
-    message: "My Hackathons - Choose an option",
+    message: "Welcome - Choose an option",
     options: [
       { value: "discuss", label: "Discussion" },
-      { value: "search", label: "Search and Filter Projects" },
-      { value: "teams", label: "Find Teams" },
+      { value: "search", label: "Search and Filter" },
       { value: "back", label: "Back to Main Menu" },
     ],
   });
@@ -62,9 +60,6 @@ async function join() {
       break;
     case "search":
       console.log("search");
-      break;
-    case "teams":
-      console.log("teams");
       break;
     case "back":
       return main(); // Return to the main menu
