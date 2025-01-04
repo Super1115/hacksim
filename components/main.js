@@ -3,6 +3,7 @@ import hackSimTitle from './hackSimTitle.js';
 import settings from "./settings.js";
 import store from 'store';
 import hostHackathon from "./hostHackathon.js";
+import joinHackathon from "./joinHackathon.js";
 
 async function main(){
     console.clear();
@@ -23,7 +24,7 @@ async function main(){
             hostHackathon(store.get('user').name,store.get('user').githubID,store.get('user').email);
             break;
         case "join":
-            console.log("joining");
+            joinHackathon(store.get('user').name,store.get('user').githubID);
             break;
         case "my":
             console.log("my hackathons");

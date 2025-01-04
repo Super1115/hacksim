@@ -3,17 +3,8 @@ import * as p from '@clack/prompts';
 import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import Hackathon from '../models/Hackathon.js';
-
-
-async function checkIfHackathonExists(id) {
-    let hackathonWtihSameID = await Hackathon.findOne({ id: id  });
-    if(hackathonWtihSameID) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
+import main from "./main.js";
+import checkIfHackathonExists from '../api/checkIfHackathonExists.js';
 
 async function hostHackathon(hostName, hostUID, hostEmail) {
     console.clear();
@@ -54,6 +45,10 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
             if (!timeRegex.test(value)) {
                 return 'Invalid time format. Please use YYYY-MM-DD HH:MM.';
             }
+            const endTime = new Date(value).getTime() / 1000;
+            if (isNaN(endTime) || endTime <= 0) {
+                return 'Invalid Unix time. Please enter a valid date and time.';
+            }
             if (value.length === 0) return 'Value is required!';
         }
     });
@@ -84,9 +79,9 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
                 message: 'Edit the content:'
             }
         ]);
-        hackathonDetails.readme = readmeContent.editedContent;
+        hackathonDetails.md = readmeContent.editedContent;
     } else {
-        hackathonDetails.readme = '';
+        hackathonDetails.md = '';
     }
 
     hackathonDetails.participants = [{ 
@@ -97,10 +92,13 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
     }];
 
 
-    
     const newHackathon = await Hackathon.create(hackathonDetails);
     
     console.log('Hackathon created successfully!',hackathonDetails);
+
+      main();
+          
+      
 }
 
 
