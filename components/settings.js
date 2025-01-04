@@ -3,6 +3,7 @@ import store from "store";
 import inquirer from "inquirer";
 import cliMd from 'cli-markdown';
 import main from "./main.js";
+import hackSimTitle from "./hackSimTitle.js";
 
 async function md(){
     const user = store.get("user");
@@ -30,7 +31,7 @@ async function md(){
             break
             
         case "view":
-            console.log(cliMd(user.md));
+            console.log(cliMd(user.md||""));
             if(await confirm({
                 message: 'Back to menu?',
                 default: true
@@ -43,6 +44,7 @@ async function md(){
 
 async function settings() {
     console.clear();
+    hackSimTitle();
     const menu = await select({
         message: 'SETTINGS',
         options: [
