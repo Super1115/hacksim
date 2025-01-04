@@ -1,0 +1,96 @@
+const inquirer = require("inquirer");
+
+// Main Menu
+async function mainMenu() {
+  const options = [
+    "Register for Hackathon",
+    "Search Projects",
+    "Find Teams",
+    "Exit",
+  ];
+
+  const { choice } = await inquirer.prompt({
+    type: "list",
+    name: "choice",
+    message: "Welcome to Hacksim! What would you like to do?",
+    choices: options,
+  });
+
+  if (choice === "Register for Hackathon") return register();
+  if (choice === "Search Projects") return searchProjects();
+  if (choice === "Find Teams") return findTeams();
+  if (choice === "Exit") process.exit(0);
+}
+
+// Register for Hackathon
+async function register() {
+  const { name } = await inquirer.prompt({
+    type: "input",
+    name: "name",
+    message: "Enter your name to register:",
+  });
+
+  console.log(`\n🎉 Welcome to the hackathon, ${name}!\n`);
+  return mainMenu();
+}
+
+// Search Projects
+async function searchProjects() {
+  const { keyword } = await inquirer.prompt({
+    type: "input",
+    name: "keyword",
+    message: "Enter a keyword to search projects (e.g., AI, Blockchain):",
+  });
+
+  const results = projects.filter(
+    (project) =>
+      project.name.toLowerCase().includes(keyword.toLowerCase()) ||
+      project.tags.some((tag) => tag.toLowerCase().includes(keyword.toLowerCase()))
+  );
+
+  console.log("\n🔍 Search Results:");
+  results.forEach((project, index) => {
+    console.log(`${index + 1}. ${project.name} by ${project.creator} (Team: ${project.team})`);
+  });
+
+  if (results.length === 0) console.log("No projects found.\n");
+  return mainMenu();
+}
+
+// Find Teams
+async function findTeams() {
+  const { skillLevel, lookingFor } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "skillLevel",
+      message: "Select your skill level:",
+      choices: ["Beginner", "Intermediate", "Experienced"],
+    },
+    {
+      type: "input",
+      name: "lookingFor",
+      message: "What skills are you looking for in a team? (comma-separated):",
+    },
+  ]);
+
+  const skills = lookingFor.split(",").map((skill) => skill.trim().toLowerCase());
+
+  const results = teams.filter(
+    (team) =>
+      team.skillLevel === skillLevel &&
+      skills.some((skill) => team.lookingFor.map((l) => l.toLowerCase()).includes(skill))
+  );
+
+  console.log("\n🔍 Matching Teams:");
+  results.forEach((team, index) => {
+    console.log(`${index + 1}. ${team.name} (Skill Level: ${team.skillLevel})`);
+  });
+
+  if (results.length === 0) console.log("No matching teams found.\n");
+  return mainMenu();
+}
+
+// Run the CLI
+mainMenu().catch((error) => {
+  console.error("An error occurred:", error.message);
+});
