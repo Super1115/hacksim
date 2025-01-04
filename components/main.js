@@ -3,9 +3,10 @@ import hackSimTitle from './hackSimTitle.js';
 import settings from "./settings.js";
 import store from 'store';
 import hostHackathon from "./hostHackathon.js";
-import discussion from "./discussion.js";
-import searchFilter from "./searchFilter.js";
-import findTeams from "./findTeams.js";
+import discussion from "./discussion.js"; // New File
+import searchFilter from "./searchFilter.js"; // New File
+import findTeams from "./findTeams.js"; // New File
+import judgingSection from "./judging.js"; // New File
 
 async function main(){
     console.clear();
@@ -17,6 +18,7 @@ async function main(){
           { value: 'host', label: 'Host Hackathon' },
           { value: 'join', label: 'Join'},
           { value: 'my', label: 'My Hackathons'},
+          { value: "judge", label: "Judging Section" }, // New option
           { value: "settings", label: "Settings"},
         { value: 'exit', label: 'Exit'},
         ],
@@ -31,6 +33,9 @@ async function main(){
         case "my":
             console.log("my hackathons");
             break;
+        case "judge":
+            console.log("judge"); // Call judging section
+            break;
         case "settings":
             settings();
             break;
@@ -39,6 +44,7 @@ async function main(){
     }
 }
 
+// Sub Menu of My Hackathon
 async function myHackathonsMenu() {
   const subMenu = await select({
     message: "My Hackathons - Choose an option",
