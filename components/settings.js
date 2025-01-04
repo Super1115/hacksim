@@ -27,7 +27,6 @@ async function md(){
             ]);
             user.md = editedContent;
             store.set("user", user);
-            md();
             break
             
         case "view":
@@ -36,10 +35,10 @@ async function md(){
                 message: 'Back to menu?',
                 default: true
               })){
-                  md();
                   break
               }
     }
+    md
 }
 
 async function settings() {
