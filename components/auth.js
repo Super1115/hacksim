@@ -1,12 +1,13 @@
 import githubAuth from '../api/githubAuth.js';
-import * as p from "@clack/prompts";
+import { spinner } from '@clack/prompts';
 
-const s = p.spinner();
+const s = spinner();
 
 async function auth(client_id, client_secret) {
     s.start()
-    await githubAuth(client_id, client_secret);
+    let data = await githubAuth(client_id, client_secret);
     s.stop()
+    return data
 }
 
 export default auth;
