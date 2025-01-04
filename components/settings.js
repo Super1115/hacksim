@@ -30,6 +30,7 @@ async function md(){
             break
             
         case "view":
+            console.clear();
             console.log(cliMd(user.md||""));
             if(await confirm({
                 message: 'Back to menu?',
@@ -38,7 +39,6 @@ async function md(){
                   break
               }
     }
-    md
 }
 
 async function settings() {
