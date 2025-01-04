@@ -2,6 +2,7 @@ import { select } from "@clack/prompts";
 import hackSimTitle from './hackSimTitle.js';
 import settings from "./settings.js";
 import store from 'store';
+import hostHackathon from "./hostHackathon.js";
 
 async function main(){
     console.clear();
@@ -19,7 +20,7 @@ async function main(){
       });
     switch(menu){
         case "host":
-            console.log("hosting");
+            hostHackathon(store.get('user').name,store.get('user').githubID,store.get('user').email);
             break;
         case "join":
             console.log("joining");
