@@ -1,7 +1,7 @@
 import figlet from "figlet";
 
 const hackSimTitle =  ()=>{figlet.text(
-    "HackSim",
+    "HackSim CLI",
     {
       font: "Chunky",
       horizontalLayout: "full",
