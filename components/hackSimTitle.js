@@ -4,9 +4,8 @@ const hackSimTitle =  ()=>{figlet.text(
     "HackSim",
     {
       font: "Chunky",
-      horizontalLayout: "default",
-      verticalLayout: "default",
-      width: 80,
+      horizontalLayout: "full",
+      verticalLayout: "full",
       whitespaceBreak: true,
     },
     function (err, data) {
