@@ -35,7 +35,8 @@ async function joinHackathon(name, UID) {
                 await findHackathonByID.save();
 
                 let userDb = await User.findOne({ githubID: store.get("user").githubID });
-                userDb.hackathons.push({id: findHackathonByID.id, role: 'participant'});
+                userDb.hackathons.push({hackathonId: findHackathonByID.id, role: 'participant'});
+                userDb.save();
                 main()
                 break
             }

@@ -93,6 +93,10 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
 
 
     const newHackathon = await Hackathon.create(hackathonDetails);
+
+    let userDb = await User.findOne({ githubID: store.get("user").githubID });
+    userDb.hackathons.push({hackathonId: hackathonDetails.id, role: 'host'});
+    userDb.save();
     
     console.log('Hackathon created successfully!',hackathonDetails);
 
