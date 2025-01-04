@@ -8,8 +8,9 @@ import { storeUser } from "./api/storeLocal.js";
 import connectDB from "./utils/db.js";
 import User from "./models/User.js";
 
-// Connect to MongoDB
-// await connectDB();
+
+await connectDB();
+
 
 
 let githubUser = await auth(
@@ -17,27 +18,24 @@ let githubUser = await auth(
   process.env.GITHUB_CLIENT_SECRET
 );
 
-console.log("Authenticated GitHub User: ", githubUser);
 
-// try {
-//   const newUser = await User.create({
-//     githubID: githubUser.login,
-//     name: githubUser.name,
-//     email: githubUser.email,
-//     githubUrl: githubUser.html_url,
-//   });
-//   console.log("User stored in database: ", newUser);
-// } catch (error) {
-//   console.error("Error storing user in database: ", error.message);
-// }
+try {
+    let newUser = await User.findOne({ githubID: githubUser.login });
+    if (!newUser) {
+        newUser = await User.create({
+            githubID: githubUser.login,
+            name: githubUser.name,
+            email: githubUser.email,
+            githubUrl: githubUser.html_url,
+        });
+        newUser.save();
+    }
 
-storeUser({
-  githubID: githubUser.login,
-  name: githubUser.name,
-  email: githubUser.email,
-  githubUrl: githubUser.html_url,
-});
+    storeUser(newUser);
 
-console.clear();
+} catch (error) {
+    console.error("Error storing user in database: ", error.message);
+}
+
 
 main();

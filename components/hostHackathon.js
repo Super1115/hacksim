@@ -1,7 +1,19 @@
 import hackSimTitle from "./hackSimTitle.js";
 import * as p from '@clack/prompts';
 import inquirer from 'inquirer';
+import mongoose from 'mongoose';
+import Hackathon from '../models/Hackathon.js';
 
+
+async function checkIfHackathonExists(id) {
+    let hackathonWtihSameID = await Hackathon.findOne({ id: id  });
+    if(hackathonWtihSameID) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 async function hostHackathon(hostName, hostUID, hostEmail) {
     console.clear();
@@ -9,12 +21,17 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
 
     const hackathonDetails = {};
 
-    hackathonDetails.id = await p.text({ 
-        message: 'What will be the hackathon\'s name(ID)?', 
-        validate(value) {
-            if (value.length === 0) return 'Value is required!';
+    while (true) {
+        hackathonDetails.id = await p.text({ 
+            message: 'What will be the hackathon\'s name(ID)?', 
+        });
+        if (await checkIfHackathonExists(hackathonDetails.id)) {
+            console.log('Hackathon with the same ID already exists.');
+        } else {
+            break;
         }
-    });
+}
+
 
     hackathonDetails.host = hostUID;
 
@@ -72,14 +89,18 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
         hackathonDetails.readme = '';
     }
 
-    hackathonDetails.participants = { 
+    hackathonDetails.participants = [{ 
         githubID: hostUID, 
         name: hostName, 
         team: null, 
         role: 'host' 
-    };
+    }];
 
-    return hackathonDetails;
+
+    
+    const newHackathon = await Hackathon.create(hackathonDetails);
+    
+    console.log('Hackathon created successfully!',hackathonDetails);
 }
 
 

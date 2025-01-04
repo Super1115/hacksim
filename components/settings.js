@@ -4,9 +4,11 @@ import inquirer from "inquirer";
 import cliMd from 'cli-markdown';
 import main from "./main.js";
 import hackSimTitle from "./hackSimTitle.js";
+import User from "../models/User.js";
+
 
 async function md(){
-    const user = store.get("user");
+    const user = await User.findOne({ githubID: store.get("user").githubID });
     console.clear();
     const menu = await select({
         message: 'README.md',
@@ -27,6 +29,7 @@ async function md(){
             ]);
             user.md = editedContent;
             store.set("user", user);
+            await user.save();
             break
             
         case "view":
