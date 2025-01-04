@@ -58,16 +58,16 @@ async function myHackathonsMenu() {
 
   switch (subMenu) {
     case "discuss":
-      await discussion();
+      console.log("discussion");
       break;
     case "search":
-      await searchFilter();
+      console.log("search");
       break;
     case "teams":
-      await findTeams();
+      console.log("teams");
       break;
     case "back":
-      return main();
+      return main(); // Return to the main menu
   }
 }
 
