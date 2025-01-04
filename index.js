@@ -4,14 +4,17 @@ import 'dotenv/config'
 
 import auth from './components/auth.js';
 import main from './components/main.js';
+import { storeUser } from './api/storeLocal.js';
 
-hackSimTitle();
 
-let githubUserData = await auth(process.env.GITHUB_CLIENT_ID, process.env.GITHUB_CLIENT_SECRET);
+let githubUser = await auth(process.env.GITHUB_CLIENT_ID, process.env.GITHUB_CLIENT_SECRET)
+
+storeUser({ "githubID": githubUser.login, "name": githubUser.name, "email": githubUser.email, "githubUrl": githubUser.html_url });
 
 console.clear();
 
-hackSimTitle();
+
 
 main();
+
 

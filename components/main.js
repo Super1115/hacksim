@@ -1,6 +1,11 @@
 import { select } from "@clack/prompts";
+import hackSimTitle from './hackSimTitle.js';
+import settings from "./settings.js";
+
 
 async function main(){
+    console.clear();
+    hackSimTitle();
     const menu = await select({
         message: 'MENU',
         options: [
@@ -22,7 +27,7 @@ async function main(){
             console.log("my hackathons");
             break;
         case "settings":
-            console.log("settings");
+            settings();
             break;
         case "exit":
             process.exit(0);
