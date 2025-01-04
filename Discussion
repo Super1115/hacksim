@@ -1,0 +1,89 @@
+const inquirer = require("inquirer");
+
+// Main Menu
+async function discussionMenu() {
+  const options = [
+    "Post a Discussion",
+    "View All Discussions",
+    "Search Discussions",
+    "Exit",
+  ];
+
+  const { choice } = await inquirer.prompt({
+    type: "list",
+    name: "choice",
+    message: "Discussion Board - What would you like to do?",
+    choices: options,
+  });
+
+  if (choice === "Post a Discussion") return postDiscussion();
+  if (choice === "View All Discussions") return viewDiscussions();
+  if (choice === "Search Discussions") return searchDiscussions();
+  if (choice === "Exit") process.exit(0);
+}
+
+// Post a Discussion
+async function postDiscussion() {
+  const { user, topic, message, tags } = await inquirer.prompt([
+    { type: "input", name: "user", message: "Enter your name:" },
+    { type: "input", name: "topic", message: "Enter the discussion topic:" },
+    { type: "input", name: "message", message: "Write your message:" },
+    { type: "input", name: "tags", message: "Add tags (comma-separated):" },
+  ]);
+
+  discussions.push({
+    user,
+    topic,
+    message,
+    tags: tags.split(",").map((tag) => tag.trim()),
+  });
+
+  console.log("\n✅ Your discussion has been posted!\n");
+  return discussionMenu();
+}
+
+// View All Discussions
+async function viewDiscussions() {
+  console.log("\n📜 All Discussions:");
+  discussions.forEach((discussion, index) => {
+    console.log(`\n${index + 1}. Topic: ${discussion.topic}`);
+    console.log(`   By: ${discussion.user}`);
+    console.log(`   Message: ${discussion.message}`);
+    console.log(`   Tags: ${discussion.tags.join(", ")}`);
+  });
+
+  console.log("\n");
+  return discussionMenu();
+}
+
+// Search Discussions
+async function searchDiscussions() {
+  const { keyword } = await inquirer.prompt({
+    type: "input",
+    name: "keyword",
+    message: "Enter a keyword to search discussions (e.g., AI, teamwork):",
+  });
+
+  const results = discussions.filter(
+    (discussion) =>
+      discussion.topic.toLowerCase().includes(keyword.toLowerCase()) ||
+      discussion.message.toLowerCase().includes(keyword.toLowerCase()) ||
+      discussion.tags.some((tag) => tag.toLowerCase().includes(keyword.toLowerCase()))
+  );
+
+  console.log("\n🔍 Search Results:");
+  results.forEach((discussion, index) => {
+    console.log(`\n${index + 1}. Topic: ${discussion.topic}`);
+    console.log(`   By: ${discussion.user}`);
+    console.log(`   Message: ${discussion.message}`);
+    console.log(`   Tags: ${discussion.tags.join(", ")}`);
+  });
+
+  if (results.length === 0) console.log("No discussions found.\n");
+  return discussionMenu();
+}
+
+// Run the CLI
+discussionMenu().catch((error) => {
+  console.error("An error occurred:", error.message);
+});
