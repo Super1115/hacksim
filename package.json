@@ -1,0 +1,27 @@
+{
+  "name": "hacksim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node .",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Super1115/hacksim.git"
+  },
+  "keywords": [
+    "hackathon"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Super1115/hacksim/issues"
+  },
+  "homepage": "https://github.com/Super1115/hacksim#readme",
+  "dependencies": {
+    "figlet": "^1.8.0"
+  }
+}
