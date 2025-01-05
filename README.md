@@ -66,9 +66,6 @@ Welcome to **Hacksim**, a comprehensive tool to help you host and manage hackath
 
   - Provide datasets for participants to use in their projects.
 
-<div align="center">
-  <img src="IMAGE_LINK_HERE" alt="Feature Showcase" width="500">
-</div>
 
 <div align="center">
   <video width="500" controls>
