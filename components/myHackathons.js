@@ -5,6 +5,7 @@ import { select, confirm } from "@clack/prompts";
 import hackathonInfo from './hackathonInfo.js';
 import main from './main.js';
 import hackSimTitle from './hackSimTitle.js';
+import hackathonHostSettings from './hackathonHostSettings.js';
 
 async function myHackathons() {
     console.clear();
@@ -28,17 +29,52 @@ async function myHackathons() {
         options: hackathonChoices
     });
 
-    if(selectedHackathon === 'back'){
-        main()
-    }
-
     console.clear();
     hackSimTitle();
 
     let hackathonData = await Hackathon.findOne({ id: selectedHackathon });
     hackathonInfo(hackathonData.id,hackathonData.host,hackathonData.startTime,hackathonData.endTime,hackathonData.website,hackathonData.contact, hackathonData.md)
-    await confirm({message: 'Back?',default: true})
-    main()
+    let menuOptions = [
+        { value: 'teamProject', label: 'My Team/Project' },
+        { value: 'searchParticipants', label: 'Search Participants' },
+        { value: 'other', label: 'Teams' },
+        { value: 'main', label: 'Back to main page' }
+    ];
+    if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'judge'||'host') {
+        menuOptions.unshift({ value: 'judge', label: 'Judge' });
+    }
+    if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'host') {
+        menuOptions.unshift({ value: 'manage', label: 'Manage Participants' });
+        menuOptions.unshift({ value: 'hostSettings', label: 'Host Settings' });
+    }
+
+    const menu = await select({
+        message: 'MENU',
+        options: menuOptions
+    });
+
+    switch(menu){
+        case "teamProject":
+
+            break;
+        case "searchParticipants":
+           
+            break;
+        case "other":
+            myHackathons();
+            break;
+        case "judge":
+            settings();
+            break;
+        case "main":
+            main();
+            break;
+        case "manage":
+            break
+        case "hostSettings":
+            hackathonHostSettings(hackathonData)
+            break
+    }
 }
 
 export default myHackathons;
