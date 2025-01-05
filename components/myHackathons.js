@@ -10,10 +10,18 @@ async function myHackathons() {
     console.clear();
     hackSimTitle();
     const userData = await User.findOne({ githubID: store.get("user").githubID });
-    const hackathonChoices = userData.hackathons.map(hackathon => ({
-        value: hackathon.hackathonId,
-        label: hackathon.hackathonId
-    }));
+    const hackathonChoices = userData.hackathons.map(hackathon => {
+        let label = `${hackathon.hackathonId} (${hackathon.role})`;
+        if (hackathon.role === 'host') {
+            label = `\x1b[32m${hackathon.hackathonId} (host)\x1b[0m`; // Green for host
+        } else if (hackathon.role === 'judge') {
+            label = `\x1b[33m${hackathon.hackathonId} (judge)\x1b[0m`; // Yellow for judge
+        }
+        return {
+            value: hackathon.hackathonId,
+            label: label
+        };
+    });
 
     const selectedHackathon = await select({
         message: 'My Hackathons:',

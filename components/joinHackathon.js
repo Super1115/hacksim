@@ -2,7 +2,6 @@ import hackSimTitle from "./hackSimTitle.js";
 import { select,confirm,text } from "@clack/prompts";
 import checkIfHackathonExists from '../api/checkIfHackathonExists.js';
 import main from "./main.js";
-import store from 'store';
 import User from '../models/User.js';
 import hackathonInfo from "./hackathonInfo.js";
 
@@ -24,6 +23,13 @@ async function joinHackathon(name, UID) {
             console.clear();
             hackSimTitle();
             hackathonInfo(findHackathonByID.id,findHackathonByID.host,findHackathonByID.startTime,findHackathonByID.endTime,findHackathonByID.website,findHackathonByID.contact, findHackathonByID.md);
+            const isAlreadyParticipant = findHackathonByID.participants.some(participant => participant.githubID === UID);
+            if (isAlreadyParticipant) {
+                console.log('You are already in this hackathon.');
+                await confirm({message: 'Back?',default: true});
+                main();
+                break;
+            }
             if(await confirm({message: 'Confirm to join?',default: true})){
                 let participantData = { 
                     githubID: UID, 
@@ -34,7 +40,7 @@ async function joinHackathon(name, UID) {
                 findHackathonByID.participants.push(participantData);
                 await findHackathonByID.save();
 
-                let userDb = await User.findOne({ githubID: store.get("user").githubID });
+                let userDb = await User.findOne({ githubID: UID });
                 userDb.hackathons.push({hackathonId: findHackathonByID.id, role: 'participant'});
                 userDb.save();
                 main()

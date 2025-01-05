@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import Hackathon from '../models/Hackathon.js';
 import main from "./main.js";
 import checkIfHackathonExists from '../api/checkIfHackathonExists.js';
+import User from "../models/User.js";
 
 async function hostHackathon(hostName, hostUID, hostEmail) {
     console.clear();
@@ -32,6 +33,10 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
             const timeRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
             if (!timeRegex.test(value)) {
                 return 'Invalid time format. Please use YYYY-MM-DD HH:MM.';
+            }
+            const startTime = new Date(value).getTime() / 1000;
+            if (isNaN(startTime) || startTime <= 0) {
+                return 'Invalid Unix time. Please enter a valid date and time.';
             }
             if (value.length === 0) return 'Value is required!';
         }
@@ -94,7 +99,7 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
 
     const newHackathon = await Hackathon.create(hackathonDetails);
 
-    let userDb = await User.findOne({ githubID: store.get("user").githubID });
+    const userDb = await User.findOne({ githubID: hostUID });
     userDb.hackathons.push({hackathonId: hackathonDetails.id, role: 'host'});
     userDb.save();
     
