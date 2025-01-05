@@ -29,6 +29,7 @@
     "cli-markdown": "^3.4.0",
     "dotenv": "^16.4.7",
     "figlet": "^1.8.0",
+    "gradient-string": "^3.0.0",
     "inquirer": "^12.3.0",
     "mongoose": "^8.9.3",
     "open": "^10.1.0",
