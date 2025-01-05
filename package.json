@@ -22,6 +22,7 @@
     "url": "https://github.com/Super1115/hacksim/issues"
   },
   "homepage": "https://github.com/Super1115/hacksim#readme",
+  "bin" : "./index.js",
   "dependencies": {
     "@clack/prompts": "^0.9.0",
     "axios": "^1.7.9",
