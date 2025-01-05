@@ -1,43 +1,38 @@
 # HackSim Team
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 <table>
     <tbody>
         <tr>
           <td align="center">
                 <a href="https://www.linkedin.com/in/superchuang/">
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQG4Vij3eedscQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730357131405?e=1741824000&v=beta&t=aUYSr4rpcRaj5s0x6JCQwEbyAUMKUkpJ8SAdtlgNtA0" width="100px;" alt="Super Chuang"/>
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQG4Vij3eedscQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730357131405?e=1741824000&v=beta&t=aUYSr4rpcRaj5s0x6JCQwEbyAUMKUkpJ8SAdtlgNtA0" width="130px;" alt="Super Chuang"/>
                     <br />
                     <sub><b>Super Chuang</b></sub>
                 </a> 
             </td>
           <td align="center">
                 <a href="https://www.linkedin.com/in/anup-khismatrao-729520221/">
-                    <img src="https://media.licdn.com/dms/image/v2/D5635AQFnyt2yzOy2IQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1729886437419?e=1736683200&v=beta&t=PJ3Z3Ix3Es56FnVAAmXV5NvwxBFqFPkQMLJ2rv_6UnE" width="100px;" alt="Anup Khismatrao"/>
+                    <img src="https://media.licdn.com/dms/image/v2/D5635AQFnyt2yzOy2IQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1729886437419?e=1736683200&v=beta&t=PJ3Z3Ix3Es56FnVAAmXV5NvwxBFqFPkQMLJ2rv_6UnE" width="130px;" alt="Anup Khismatrao"/>
                     <br />
                     <sub><b>Anup Khismatrao</b></sub>
                 </a> 
             </td>
             <td align="center">
                 <a href="https://www.linkedin.com/in/fazeel-1999/">
-                    <img src="https://media.licdn.com/dms/image/v2/C4D03AQHEz8z1A0cAQA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1634121044598?e=1741824000&v=beta&t=-O1e0MnwkURZ0qPNJtluHSp3AbeqULJFkhvHvOj_M0Q" width="100px;" alt="Fazeel Ahmed Khan"/>
+                    <img src="https://media.licdn.com/dms/image/v2/C4D03AQHEz8z1A0cAQA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1634121044598?e=1741824000&v=beta&t=-O1e0MnwkURZ0qPNJtluHSp3AbeqULJFkhvHvOj_M0Q" width="130px;" alt="Fazeel Ahmed Khan"/>
                     <br />
                     <sub><b>Fazeel Ahmed Khan</b></sub>
                 </a> 
             </td>
           <td align="center">
                 <a href="https://github.com/MohSaqlainn/">
-                    <img src="https://avatars.githubusercontent.com/u/77551019?v=4" width="100px;" alt="Moh Saqlain"/>
+                    <img src="https://avatars.githubusercontent.com/u/77551019?v=4" width="130px;" alt="Moh Saqlain"/>
                     <br />
                     <sub><b>Moh Saqlain</b></sub>
                 </a> 
             </td>
             <td align="center">
                 <a href="https://github.com/Ash2068">
-                    <img src="https://avatars.githubusercontent.com/u/146135649?v=4" width="100px;" alt="Ashlyn Hall"/>
+                    <img src="https://avatars.githubusercontent.com/u/146135649?v=4" width="130px;" alt="Ashlyn Hall"/>
                     <br />
                     <sub><b>Ashlyn Hall</b></sub>
                 </a> 
