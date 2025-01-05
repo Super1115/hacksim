@@ -92,7 +92,7 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
     hackathonDetails.participants = [{ 
         githubID: hostUID, 
         name: hostName, 
-        team: null, 
+        team: `*${hostUID}`, 
         role: 'host' 
     }];
     hackathonDetails.team=
