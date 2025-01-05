@@ -9,7 +9,7 @@ import myHaclathons from "./myHackathons.js";
 async function main(){
     console.clear();
     hackSimTitle();
-    console.log(`Hello! ${store.get('user').name}`);
+    console.log(`Hello! ${store.get('user')?.name}`);
     const menu = await select({
         message: 'MENU',
         options: [

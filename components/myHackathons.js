@@ -6,11 +6,16 @@ import hackathonInfo from './hackathonInfo.js';
 import main from './main.js';
 import hackSimTitle from './hackSimTitle.js';
 import hackathonHostSettings from './hackathonHostSettings.js';
+import manageHackathonParticipants from "./manageHackathonParticipants.js"
 
 async function myHackathons() {
     console.clear();
     hackSimTitle();
     const userData = await User.findOne({ githubID: store.get("user").githubID });
+    if (!userData.hackathons || userData.hackathons.length === 0) {
+        await confirm({ message: 'You do not have any hackathons. Returning to main page.' });
+        return main();
+    }
     const hackathonChoices = userData.hackathons.map(hackathon => {
         let label = `${hackathon.hackathonId} (${hackathon.role})`;
         if (hackathon.role === 'host') {
@@ -70,6 +75,7 @@ async function myHackathons() {
             main();
             break;
         case "manage":
+            manageHackathonParticipants(hackathonData)
             break
         case "hostSettings":
             hackathonHostSettings(hackathonData)
