@@ -4,7 +4,7 @@ import settings from "./settings.js";
 import store from 'store';
 import hostHackathon from "./hostHackathon.js";
 import joinHackathon from "./joinHackathon.js";
-import myHaclathons from "./myHackathons.js";
+import myHackathons from "./myHackathons.js";
 import chalk from "chalk";
 
 async function main(){
