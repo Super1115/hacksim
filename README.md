@@ -49,6 +49,19 @@
 
 Welcome to **Hacksim**, a comprehensive tool to help you host and manage hackathons effortlessly. Whether you're organizing a hackathon for your friends, school club, or broader community, Hacksim provides everything you need to make it a success. From registration to judging, and even mini-events, we've got you covered! 🎉ὋbὍa
 
+
+## Try it out!
+
+```npx hacksim```
+(.env file required)
+
+```
+(.env)
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+MONGO_URI=
+```
+
 ## Features 🌐⚖️Ὠ
 
 - **GitHub Authentication**
