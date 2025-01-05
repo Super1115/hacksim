@@ -45,7 +45,7 @@ async function myHackathons() {
         { value: 'other', label: 'Teams' },
         { value: 'main', label: 'Back to main page' }
     ];
-    if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'judge'||'host') {
+    if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'judge' || hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'host') {
         menuOptions.unshift({ value: 'judge', label: 'Judge' });
     }
     if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'host') {
@@ -66,10 +66,10 @@ async function myHackathons() {
            
             break;
         case "other":
-            myHackathons();
+
             break;
         case "judge":
-            settings();
+    
             break;
         case "main":
             main();

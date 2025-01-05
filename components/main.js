@@ -14,7 +14,7 @@ async function main(){
         message: 'MENU',
         options: [
           { value: 'host', label: 'Host Hackathon' },
-          { value: 'join', label: 'Join'},
+          { value: 'join', label: 'Join Hackathon'},
           { value: 'my', label: 'My Hackathons'},
           { value: "settings", label: "Settings"},
         { value: 'exit', label: 'Exit'},

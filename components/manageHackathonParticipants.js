@@ -46,7 +46,8 @@ async function editUser(user,hackathonDataObject) {
                 await userDb.save();
             }
             await hackathonDataObject.save();
-
+            main()
+            break
         }
         case "remove":
             const participantIndex = hackathonDataObject.participants.findIndex(participant => participant.githubID === user);
