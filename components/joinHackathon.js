@@ -35,9 +35,15 @@ async function joinHackathon(name, UID) {
                     githubID: UID, 
                     name: name, 
                     team: null, 
-                    role: 'participant' 
+                    role: 'participant' ,
                 };
+                let teamData = {
+                    id: `*${UID}`,
+                    members : [UID],
+                    leader: UID
+                  }
                 findHackathonByID.participants.push(participantData);
+                findHackathonByID.team.push(teamData)
                 await findHackathonByID.save();
 
                 let userDb = await User.findOne({ githubID: UID });
@@ -54,21 +60,9 @@ async function joinHackathon(name, UID) {
         else {
             console.clear();
             hackSimTitle();
-            const menu = await select({
-                message: 'The Hackathon does not exist.',
-                options: [
-                  { value: 'enter', label: 'Enter Again' },
-                  { value: 'menu', label: 'Back'},
-                ],
-              });
-            switch(menu){
-                case "enter":
-                    console.clear();
-                    break;
-                case "menu":
-                    main()
-                    break;
-            }
+            await confirm({message: 'The Hackathon does not exist',default: true})
+              main()
+              break
         }
         
     }

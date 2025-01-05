@@ -95,6 +95,12 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
         team: null, 
         role: 'host' 
     }];
+    hackathonDetails.team=
+      [{
+        id: `*${hostUID}`,
+        members : [hostUID],
+        leader: hostUID
+      }]
 
 
     const newHackathon = await Hackathon.create(hackathonDetails);

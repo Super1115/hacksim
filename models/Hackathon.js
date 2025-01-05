@@ -7,7 +7,14 @@ const HackathonSchema = new mongoose.Schema({
   endTime: { type: Number, required: true }, // Unix timestamp for end time
   website: { type: String }, // Optional website link
   contact: { type: String, required: true }, // Default to host's email
-  md: { type: String }, // Markdown description for the hackathon
+  md: { type: String },
+  team : [{
+    id: { type: String, required: true },
+    repo: { type: String },
+    members : [{ type : String}],
+    md : { type : String },
+    leader: {type : String}
+  }],
   participants: [
     {
       githubID: { type: String, required: true },

@@ -42,7 +42,7 @@ async function myHackathons() {
     hackathonInfo(hackathonData.id,hackathonData.host,hackathonData.startTime,hackathonData.endTime,hackathonData.website,hackathonData.contact, hackathonData.md)
     let menuOptions = [
         { value: 'teamProject', label: 'My Team/Project' }, 
-        { value: 'searchParticipants', label: 'Participants' }, 
+        { value: 'searchParticipants', label: 'Participants' }, //
         { value: 'other', label: 'Teams' },
         { value: 'main', label: 'Back to main page' } //
     ];
@@ -55,7 +55,7 @@ async function myHackathons() {
     }
 
     const menu = await select({
-        message: 'MENU',
+        message: 'Hackathon MENU',
         options: menuOptions
     });
 
