@@ -48,8 +48,20 @@ async function editUser(user,hackathonDataObject) {
             await hackathonDataObject.save();
 
         }
+        case "remove":
+            const participantIndex = hackathonDataObject.participants.findIndex(participant => participant.githubID === user);
+            if (participantIndex !== -1) {
+                hackathonDataObject.participants.splice(participantIndex, 1);
+                await hackathonDataObject.save();
+            }
+            await User.updateOne(
+                { githubID: user },
+                { $pull: { hackathons: { hackathonId: hackathonDataObject.id } } }
+            );
+            main()
+            break;
         case "main":
-            main();
+            main()
             break;
     }
 }
