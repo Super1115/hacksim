@@ -7,6 +7,7 @@ import main from './main.js';
 import hackSimTitle from './hackSimTitle.js';
 import hackathonHostSettings from './hackathonHostSettings.js';
 import manageHackathonParticipants from "./manageHackathonParticipants.js"
+import searchParticipants from "./searchParticipants.js"
 
 async function myHackathons() {
     console.clear();
@@ -40,17 +41,17 @@ async function myHackathons() {
     let hackathonData = await Hackathon.findOne({ id: selectedHackathon });
     hackathonInfo(hackathonData.id,hackathonData.host,hackathonData.startTime,hackathonData.endTime,hackathonData.website,hackathonData.contact, hackathonData.md)
     let menuOptions = [
-        { value: 'teamProject', label: 'My Team/Project' },
-        { value: 'searchParticipants', label: 'Search Participants' },
+        { value: 'teamProject', label: 'My Team/Project' }, 
+        { value: 'searchParticipants', label: 'Participants' }, 
         { value: 'other', label: 'Teams' },
-        { value: 'main', label: 'Back to main page' }
+        { value: 'main', label: 'Back to main page' } //
     ];
     if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'judge' || hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'host') {
         menuOptions.unshift({ value: 'judge', label: 'Judge' });
     }
     if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'host') {
-        menuOptions.unshift({ value: 'manage', label: 'Manage Participants' });
-        menuOptions.unshift({ value: 'hostSettings', label: 'Host Settings' });
+        menuOptions.unshift({ value: 'manage', label: 'Manage Participants' }); //
+        menuOptions.unshift({ value: 'hostSettings', label: 'Host Settings' }); //
     }
 
     const menu = await select({
@@ -63,7 +64,7 @@ async function myHackathons() {
 
             break;
         case "searchParticipants":
-           
+            searchParticipants(hackathonData)
             break;
         case "other":
 
