@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Super1115/hacksim/main/images/logo.jpg" alt="Hacksim Logo" width="200">
+</div>
+
 # Hacksim: Host Your Own Hackathon ✨
 
 Welcome to **Hacksim**, a comprehensive tool to help you host and manage hackathons effortlessly. Whether you're organizing a hackathon for your friends, school club, or broader community, Hacksim provides everything you need to make it a success. From registration to judging, and even mini-events, we've got you covered! 🎉ὋbὍa
@@ -61,6 +65,18 @@ Welcome to **Hacksim**, a comprehensive tool to help you host and manage hackath
 - **Dataset Management**
 
   - Provide datasets for participants to use in their projects.
+
+<div align="center">
+  <img src="IMAGE_LINK_HERE" alt="Feature Showcase" width="500">
+</div>
+
+<div align="center">
+  <video width="500" controls>
+    <source src="VIDEO_LINK_HERE" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
 
 ## Contribution ⚙️ὒὤ
 
