@@ -9,6 +9,8 @@ import hackathonHostSettings from './hackathonHostSettings.js';
 import manageHackathonParticipants from "./manageHackathonParticipants.js"
 import searchParticipants from "./searchParticipants.js"
 import teams from "./teams.js"
+import teamAndProject from './teamAndProject.js';
+import judge from './judge.js';
 
 async function myHackathons() {
     console.clear();
@@ -44,7 +46,7 @@ async function myHackathons() {
     let menuOptions = [
         { value: 'teamProject', label: 'My Team/Project' }, 
         { value: 'searchParticipants', label: 'Participants' }, //
-        { value: 'other', label: 'Teams' },
+        { value: 'other', label: 'Teams' }, // 
         { value: 'main', label: 'Back to main page' } //
     ];
     if (hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'judge' || hackathonData.participants.find(user => user.githubID === store.get("user").githubID).role === 'host') {
@@ -62,7 +64,7 @@ async function myHackathons() {
 
     switch(menu){
         case "teamProject":
-
+            teamAndProject(hackathonData)
             break;
         case "searchParticipants":
             searchParticipants(hackathonData)
@@ -71,7 +73,7 @@ async function myHackathons() {
             teams(hackathonData)
             break;
         case "judge":
-    
+            judge(hackathonData)
             break;
         case "main":
             main();

@@ -13,7 +13,8 @@ const HackathonSchema = new mongoose.Schema({
     repo: { type: String },
     members : [{ type : String}],
     md : { type : String },
-    leader: {type : String}
+    leader: {type : String},
+    isSubmit : {type : Boolean, required : true}
   }],
   participants: [
     {

@@ -99,7 +99,8 @@ async function hostHackathon(hostName, hostUID, hostEmail) {
       [{
         id: `*${hostUID}`,
         members : [hostUID],
-        leader: hostUID
+        leader: hostUID,
+        isSubmit : false
       }]
 
 

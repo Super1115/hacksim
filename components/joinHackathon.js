@@ -40,7 +40,8 @@ async function joinHackathon(name, UID) {
                 let teamData = {
                     id: `*${UID}`,
                     members : [UID],
-                    leader: UID
+                    leader: UID,
+                    isSubmit : false
                   }
                 findHackathonByID.participants.push(participantData);
                 findHackathonByID.team.push(teamData)
