@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Super1115/hacksim/main/images/logo.jpg" alt="Hacksim Logo" width="200">
+  <img src="https://raw.githubusercontent.com/Super1115/hacksim/main/images/logo (1).jpg" alt="Hacksim Logo" width="200">
 </div>
 
 # Hacksim: Host Your Own Hackathon ✨
