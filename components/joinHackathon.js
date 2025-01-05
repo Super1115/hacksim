@@ -34,7 +34,7 @@ async function joinHackathon(name, UID) {
                 let participantData = { 
                     githubID: UID, 
                     name: name, 
-                    team: null, 
+                    team: `*${UID}`, 
                     role: 'participant' ,
                 };
                 let teamData = {

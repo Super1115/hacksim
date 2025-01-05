@@ -8,6 +8,7 @@ import hackSimTitle from './hackSimTitle.js';
 import hackathonHostSettings from './hackathonHostSettings.js';
 import manageHackathonParticipants from "./manageHackathonParticipants.js"
 import searchParticipants from "./searchParticipants.js"
+import teams from "./teams.js"
 
 async function myHackathons() {
     console.clear();
@@ -67,7 +68,7 @@ async function myHackathons() {
             searchParticipants(hackathonData)
             break;
         case "other":
-
+            teams(hackathonData)
             break;
         case "judge":
     
